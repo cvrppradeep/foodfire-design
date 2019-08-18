@@ -5,22 +5,37 @@
             <ion-header>
 
                 <ion-toolbar style="min-height: 280px;">
-                    <ion-grid>
 
-                        <div class="m1">
-                            <ion-icon style=" font-size:23px; " color="black" name="menu"></ion-icon>
-                        </div>
-                        <div class="m2">
-                            <img src="./../assets/clogo.png">
-                        </div>
-                        <div class="m3">
-                            <img src="./../assets/c1logo.jpg">
-                        </div>
-                        <div class="m5">
-                            <h1 style=color:white>
-                                Chicster
-                            </h1>
-                        </div>
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col class="m1">
+
+                                <ion-icon style=" font-size:23px; " color="black" name="menu"></ion-icon>
+                            </ion-col>
+                            <ion-col class="m2">
+
+                                <img src="./../assets/clogo.png">
+
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-row>
+                                <div class="m3">
+                                    <img src="./../assets/c1logo.jpg">
+                                </div>
+                                <div class="m5">
+                                    <h1 class="n1">
+                                        Chicster
+                                    </h1>
+                                </div>
+                            </ion-row>
+
+                            <ion-col>
+                            </ion-col>
+                            <ion-col>
+                            </ion-col>
+
+                        </ion-row>
                     </ion-grid>
 
                 </ion-toolbar>
@@ -34,393 +49,45 @@
                 </ion-row>
             </ion-grid>
 
-            <ion-grid style="MARGIN-TOP: -5PX;background-color: #f4f4f4;">
+            <ion-row>
+                <h1 style="font-size: 14px;margin-left: 10px; margin-top: 10px;color: gray;">SANDWICHES</h1>
 
-                <ion-row>
-                    <h1 style="font-size: 14px;margin-left: 10px; margin-top: 10px;color: gray;">KIDS MEAL</h1>
+            </ion-row>
+
+            <ion-item style="margin-top: 21px;">
+
+                <ion-row style="padding-bottom: 10px;border-bottom: 1px solid #ccc;" v-for="p in products" :key="p._id">
+                    <ion-col>
+                        <img class="m10" v-if="p.img" :src="'/static/'+p.img[0]" alt="">
+                    </ion-col>
+                    <ion-col class="m9">
+
+                        <span style="margin-left:-55px;">
+                            {{p.name}}
+                        </span>
+                        <div style="padding-top: 5px;">
+                            <span style="font-size: 13px;margin-left: -55px;color: rgba(0, 0, 0, 0.54);padding-top: 3px;">
+                                Served with waffle fries and
+                            </span>
+                        </div>
+                        <div>
+                            <span style="font-size: 13px;margin-left: -55px;color: rgba(0, 0, 0, 0.54);"> cola.
+                            </span>
+                        </div>
+
+                    </ion-col>
+                    <ion-col class="col text-center" v-if="p">
+                        <h1 class="m11" v-if="p.variants.length>0">{{p.variants[0].price}}
+                        </h1>
+                        <div class="m11">
+                            <ion-icon style="font-size: 33px;" class="col text-center" name="add-circle"></ion-icon>
+
+                        </div>
+                    </ion-col>
 
                 </ion-row>
 
-                <ion-item style="margin-top: 21px;border-top: 1px solid #ccc;" v-for="p in products" :key="p._id">
-
-                    <ion-row style="padding-bottom: 10px;">
-                        <ion-col>
-                            <img class="m10" v-if="p.img" :src="'/static/'+p.img[0]" alt="" @click="go('/product/'+p._id)">
-                        </ion-col>
-                        <ion-col class="m9">
-
-                            <span style="margin-left:-55px;" @click="go('/product/'+p._id)">
-                                {{p.name}}
-                            </span>
-                            <div style="padding-top: 5px;">
-                                <span style="font-size: 13px;margin-left: -55px;color: rgba(0, 0, 0, 0.54);padding-top: 3px;">
-                                    Served with waffle fries and
-                                </span>
-                            </div>
-                            <div>
-                                <span style="font-size: 13px;margin-left: -55px;color: rgba(0, 0, 0, 0.54);"> cola.
-                                </span>
-                            </div>
-
-                        </ion-col>
-                        <ion-col class="col text-center" v-if="p">
-                            <h1 class="m11" v-if="p.products.variants">{{p.products[0].variants[0].price}}
-                            </h1>
-                            <div class="m11">
-                                <ion-icon style="font-size: 33px;" class="col text-center" name="add-circle"></ion-icon>
-
-                            </div>
-                        </ion-col>
-
-                    </ion-row>
-
-                </ion-item>
-
-            </ion-grid>
-            <ion-grid style="MARGIN-TOP: -5PX;background-color: #f4f4f4;">
-
-                <ion-row>
-                    <h1 style="font-size: 14px;margin-left: 10px; margin-top: 10px;color: gray;">SANDWICHES</h1>
-
-                </ion-row>
-
-                <ion-item style="margin-top: 21px;border-top: 1px solid #ccc;" v-for="p in products" :key="p._id">
-
-                    <ion-row style="padding-bottom: 10px;">
-                        <ion-col>
-                            <img class="m10" v-if="p.img" :src="'/static/'+p.img[0]" alt="" @click="go('/product/'+p._id)">
-                        </ion-col>
-                        <ion-col class="m9">
-
-                            <span style="margin-left:-55px;" @click="go('/product/'+p._id)">
-                                {{p.name}}
-                            </span>
-                            <div style="padding-top: 5px;">
-                                <span style="font-size: 13px;margin-left: -55px;color: rgba(0, 0, 0, 0.54);padding-top: 3px;">
-                                    Served with waffle fries and
-                                </span>
-                            </div>
-                            <div>
-                                <span style="font-size: 13px;margin-left: -55px;color: rgba(0, 0, 0, 0.54);"> cola.
-                                </span>
-                            </div>
-
-                        </ion-col>
-                        <ion-col class="col text-center" v-if="p">
-                            <h1 class="m11" v-if="p.variants">{{p.variants[0].price}}
-                            </h1>
-                            <div class="m11">
-                                <ion-icon style="font-size: 33px;" class="col text-center" name="add-circle"></ion-icon>
-
-                            </div>
-                        </ion-col>
-
-                    </ion-row>
-
-                </ion-item>
-
-            </ion-grid>
-            <ion-grid style="MARGIN-TOP: -5PX;background-color: #f4f4f4;">
-
-                <ion-row>
-                    <h1 style="font-size: 14px;margin-left: 10px; margin-top: 10px;color: gray;">CHICSTER BUCKET</h1>
-
-                </ion-row>
-
-                <ion-item style="margin-top: 21px;border-top: 1px solid #ccc;" v-for="p in products" :key="p._id">
-
-                    <ion-row style="padding-bottom: 10px;">
-                        <ion-col>
-                            <img class="m10" v-if="p.img" :src="'/static/'+p.img[0]" alt="" @click="go('/product/'+p._id)">
-                        </ion-col>
-                        <ion-col class="m9">
-
-                            <span style="margin-left:-55px;" @click="go('/product/'+p._id)">
-                                {{p.name}}
-                            </span>
-                            <div style="padding-top: 5px;">
-                                <span style="font-size: 13px;margin-left: -55px;color: rgba(0, 0, 0, 0.54);padding-top: 3px;">
-                                    Served with waffle fries and
-                                </span>
-                            </div>
-                            <div>
-                                <span style="font-size: 13px;margin-left: -55px;color: rgba(0, 0, 0, 0.54);"> cola.
-                                </span>
-                            </div>
-
-                        </ion-col>
-                        <ion-col class="col text-center" v-if="p">
-                            <h1 class="m11" v-if="p.variants">{{p.variants[0].price}}
-                            </h1>
-                            <div class="m11">
-                                <ion-icon style="font-size: 33px;" class="col text-center" name="add-circle"></ion-icon>
-
-                            </div>
-                        </ion-col>
-
-                    </ion-row>
-
-                </ion-item>
-
-            </ion-grid>
-            <ion-grid style="MARGIN-TOP: -5PX;background-color: #f4f4f4;">
-
-                <ion-row>
-                    <h1 style="font-size: 14px;margin-left: 10px; margin-top: 10px;color: gray;">EXTRAS</h1>
-
-                </ion-row>
-
-                <ion-item style="margin-top: 21px;border-top: 1px solid #ccc;" v-for="p in products" :key="p._id">
-
-                    <ion-row style="padding-bottom: 10px;">
-                        <ion-col>
-                            <img class="m10" v-if="p.img" :src="'/static/'+p.img[0]" alt="" @click="go('/product/'+p._id)">
-                        </ion-col>
-                        <ion-col class="m9">
-
-                            <span style="margin-left:-55px;" @click="go('/product/'+p._id)">
-                                {{p.name}}
-                            </span>
-                            <div style="padding-top: 5px;">
-                                <span style="font-size: 13px;margin-left: -55px;color: rgba(0, 0, 0, 0.54);padding-top: 3px;">
-                                    Served with waffle fries and
-                                </span>
-                            </div>
-                            <div>
-                                <span style="font-size: 13px;margin-left: -55px;color: rgba(0, 0, 0, 0.54);"> cola.
-                                </span>
-                            </div>
-
-                        </ion-col>
-                        <ion-col class="col text-center" v-if="p">
-                            <h1 class="m11" v-if="p.variants">{{p.variants[0].price}}
-                            </h1>
-                            <div class="m11">
-                                <ion-icon style="font-size: 33px;" class="col text-center" name="add-circle"></ion-icon>
-
-                            </div>
-                        </ion-col>
-
-                    </ion-row>
-
-                </ion-item>
-
-            </ion-grid>
-            <ion-grid style="MARGIN-TOP: -5PX;background-color: #f4f4f4;">
-
-                <ion-row>
-                    <h1 style="font-size: 14px;margin-left: 10px; margin-top: 10px;color: gray;">SALADS</h1>
-
-                </ion-row>
-
-                <ion-item style="margin-top: 21px;border-top: 1px solid #ccc;" v-for="p in products" :key="p._id">
-
-                    <ion-row style="padding-bottom: 10px;">
-                        <ion-col>
-                            <img class="m10" v-if="p.img" :src="'/static/'+p.img[0]" alt="" @click="go('/product/'+p._id)">
-                        </ion-col>
-                        <ion-col class="m9">
-
-                            <span style="margin-left:-55px;" @click="go('/product/'+p._id)">
-                                {{p.name}}
-                            </span>
-                            <div style="padding-top: 5px;">
-                                <span style="font-size: 13px;margin-left: -55px;color: rgba(0, 0, 0, 0.54);padding-top: 3px;">
-                                    Served with waffle fries and
-                                </span>
-                            </div>
-                            <div>
-                                <span style="font-size: 13px;margin-left: -55px;color: rgba(0, 0, 0, 0.54);"> cola.
-                                </span>
-                            </div>
-
-                        </ion-col>
-                        <ion-col class="col text-center" v-if="p">
-                            <h1 class="m11" v-if="p.variants">{{p.variants[0].price}}
-                            </h1>
-                            <div class="m11">
-                                <ion-icon style="font-size: 33px;" class="col text-center" name="add-circle"></ion-icon>
-
-                            </div>
-                        </ion-col>
-
-                    </ion-row>
-
-                </ion-item>
-
-            </ion-grid>
-            <ion-grid style="MARGIN-TOP: -5PX;background-color: #f4f4f4;">
-
-                <ion-row>
-                    <h1 style="font-size: 14px;margin-left: 10px; margin-top: 10px;color: gray;">SOUCES</h1>
-
-                </ion-row>
-
-                <ion-item style="margin-top: 21px;border-top: 1px solid #ccc;" v-for="p in products" :key="p._id">
-
-                    <ion-row style="padding-bottom: 10px;">
-                        <ion-col>
-                            <img class="m10" v-if="p.img" :src="'/static/'+p.img[0]" alt="" @click="go('/product/'+p._id)">
-                        </ion-col>
-                        <ion-col class="m9">
-
-                            <span style="margin-left:-55px;" @click="go('/product/'+p._id)">
-                                {{p.name}}
-                            </span>
-                            <div style="padding-top: 5px;">
-                                <span style="font-size: 13px;margin-left: -55px;color: rgba(0, 0, 0, 0.54);padding-top: 3px;">
-                                    Served with waffle fries and
-                                </span>
-                            </div>
-                            <div>
-                                <span style="font-size: 13px;margin-left: -55px;color: rgba(0, 0, 0, 0.54);"> cola.
-                                </span>
-                            </div>
-
-                        </ion-col>
-                        <ion-col class="col text-center" v-if="p">
-                            <h1 class="m11" v-if="p.variants">{{p.variants[0].price}}
-                            </h1>
-                            <div class="m11">
-                                <ion-icon style="font-size: 33px;" class="col text-center" name="add-circle"></ion-icon>
-
-                            </div>
-                        </ion-col>
-
-                    </ion-row>
-
-                </ion-item>
-
-            </ion-grid>
-            <ion-grid style="MARGIN-TOP: -5PX;background-color: #f4f4f4;">
-
-                <ion-row>
-                    <h1 style="font-size: 14px;margin-left: 10px; margin-top: 10px;color: gray;">SALADS</h1>
-
-                </ion-row>
-
-                <ion-item style="margin-top: 21px;border-top: 1px solid #ccc;" v-for="p in products" :key="p._id">
-
-                    <ion-row style="padding-bottom: 10px;">
-                        <ion-col>
-                            <img class="m10" v-if="p.img" :src="'/static/'+p.img[0]" alt="" @click="go('/product/'+p._id)">
-                        </ion-col>
-                        <ion-col class="m9">
-
-                            <span style="margin-left:-55px;" @click="go('/product/'+p._id)">
-                                {{p.name}}
-                            </span>
-                            <div style="padding-top: 5px;">
-                                <span style="font-size: 13px;margin-left: -55px;color: rgba(0, 0, 0, 0.54);padding-top: 3px;">
-                                    Served with waffle fries and
-                                </span>
-                            </div>
-                            <div>
-                                <span style="font-size: 13px;margin-left: -55px;color: rgba(0, 0, 0, 0.54);"> cola.
-                                </span>
-                            </div>
-
-                        </ion-col>
-                        <ion-col class="col text-center" v-if="p">
-                            <h1 class="m11" v-if="p.variants">{{p.variants[0].price}}
-                            </h1>
-                            <div class="m11">
-                                <ion-icon style="font-size: 33px;" class="col text-center" name="add-circle"></ion-icon>
-
-                            </div>
-                        </ion-col>
-
-                    </ion-row>
-
-                </ion-item>
-
-            </ion-grid>
-            <ion-grid style="MARGIN-TOP: -5PX;background-color: #f4f4f4;">
-
-                <ion-row>
-                    <h1 style="font-size: 14px;margin-left: 10px; margin-top: 10px;color: gray;">DRINKS</h1>
-
-                </ion-row>
-
-                <ion-item style="margin-top: 21px;border-top: 1px solid #ccc;" v-for="p in products" :key="p._id">
-
-                    <ion-row style="padding-bottom: 10px;">
-                        <ion-col>
-                            <img class="m10" v-if="p.img" :src="'/static/'+p.img[0]" alt="" @click="go('/products/'+p._id)">
-                        </ion-col>
-                        <ion-col class="m9">
-
-                            <span style="margin-left:-55px;" @click="go('/products/'+p._id)">
-                                {{p.name}}
-                            </span>
-                            <div style="padding-top: 5px;">
-                                <span style="font-size: 13px;margin-left: -55px;color: rgba(0, 0, 0, 0.54);padding-top: 3px;">
-                                    Served with waffle fries and
-                                </span>
-                            </div>
-                            <div>
-                                <span style="font-size: 13px;margin-left: -55px;color: rgba(0, 0, 0, 0.54);"> cola.
-                                </span>
-                            </div>
-
-                        </ion-col>
-                        <ion-col class="col text-center" v-if="p">
-                            <h1 class="m11" v-if="p.variants">{{p.variants[0].price}}
-                            </h1>
-                            <div class="m11">
-                                <ion-icon style="font-size: 33px;" class="col text-center" name="add-circle"></ion-icon>
-
-                            </div>
-                        </ion-col>
-
-                    </ion-row>
-
-                </ion-item>
-
-            </ion-grid>
-            <ion-grid style="MARGIN-TOP: -5PX;background-color: #f4f4f4;">
-
-                <ion-row>
-                    <h1 style="font-size: 14px;margin-left: 10px; margin-top: 10px;color: gray;">STARTERS</h1>
-
-                </ion-row>
-
-                <ion-item style="margin-top: 21px;border-top: 1px solid #ccc;" v-for="p in products" :key="p._id">
-
-                    <ion-row style="padding-bottom: 10px;">
-                        <ion-col>
-                            <img class="m10" v-if="p.img" :src="'/static/'+p.img[0]" alt="" @click="go('/product/'+p._id)">
-                        </ion-col>
-                        <ion-col class="m9">
-
-                            <span style="margin-left:-55px;" @click="go('/product/'+p._id)">
-                                {{p.name}}
-                            </span>
-                            <div style="padding-top: 5px;">
-                                <span style="font-size: 13px;margin-left: -55px;color: rgba(0, 0, 0, 0.54);padding-top: 3px;">
-                                    Served with waffle fries and
-                                </span>
-                            </div>
-                            <div>
-                                <span style="font-size: 13px;margin-left: -55px;color: rgba(0, 0, 0, 0.54);"> cola.
-                                </span>
-                            </div>
-
-                        </ion-col>
-                        <ion-col class="col text-center" v-if="p">
-                            <h1 class="m11" v-if="p.variants">{{p.variants[0].price}}
-                            </h1>
-                            <div class="m11">
-                                <ion-icon style="font-size: 33px;" class="col text-center" name="add-circle"></ion-icon>
-
-                            </div>
-                        </ion-col>
-
-                    </ion-row>
-
-                </ion-item>
-
-            </ion-grid>
+            </ion-item>
 
         </ion-content>
 
@@ -451,7 +118,7 @@ export default {
   },
 
   async created() {
-    let res = await http.get("products/categories", {
+    let res = await http.get("products", {
       params: { sort: "name" }
     });
     // console.log(res);
@@ -469,12 +136,15 @@ export default {
   background-image: url("https://zyda-photos-prod.s3.amazonaws.com/restaurants/photo_urls/115/default/cbca88e7-4941-41f7-aedb-91ad616dbf21.jpeg?1537099141");
   background-size: cover;
 }
+.n1 {
+  color: white;
+  text-align: -webkit-center;
+}
 .m1 {
-  margin-left: -353px;
+  text-align: -webkit-left;
 }
 .m2 {
-  margin-top: -32px;
-  margin-left: 351px;
+  text-align: -webkit-right;
 }
 .m3 {
   width: 50px;
@@ -484,8 +154,8 @@ export default {
   margin-left: 10px;
 }
 .m5 {
-  margin-top: -72px;
-  margin-left: -146px;
+  padding-top: 133px;
+  padding-left: 7px;
 }
 .m6 {
   color: gray;
@@ -493,7 +163,7 @@ export default {
   margin-top: -6px;
 }
 .m7 {
-  width: 408px;
+  width: 100%;
   height: 50px;
   color: #0944ae;
 }

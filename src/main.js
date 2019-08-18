@@ -7,6 +7,7 @@ import './firebase'
 import VueFire from 'vuefire'
 import axios from 'axios'
 
+
 Vue.config.productionTip = false
 
 Vue.config.ignoredElements = [
